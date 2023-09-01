@@ -25,13 +25,23 @@ const hendleLoadTube = async (catagoryId) =>{
 
     const cardContainer = document.getElementById('card-container');
     cardContainer.textContent ="";
-
-     data.data.forEach((tube)=>{
+   const drawingcontainer =document.getElementById('drawing-container')
+    if(data.data.length === 0){
+      drawingcontainer.innerHTML = `
+      <div class="text-center">
+      <img class="w-[140px] mx-auto" src="../image/Icon.png" alt="">
+      <p class="text-black text-4xl font-bold">Oops!! Sorry, There is no <br> content here</p>
+      </div>
+      `
+    }else{
+      data.data.forEach((tube)=>{
         console.log(tube);
         const div = document.createElement('div');
         div.innerHTML=`
         <div  class="card w-96 bg-base-100 shadow-xl">
         <figure><img class="w-[312px] h-[200px]" src="${tube.thumbnail}" alt="Shoes" /></figure>
+        <p>${tube.others.posted_date * 0.000278}<p>
+        
         <div class="card-body">
           <div class=" flex gap-4 mt-8">
             <div>
@@ -42,10 +52,10 @@ const hendleLoadTube = async (catagoryId) =>{
               <div class="flex">
               <div>
               <h4>${tube?.authors?.[0]?.profile_name}</h4>
-              <p><span>${tube.others.views} </span>views</p>  
+              <p><span id="views">${tube.others.views} </span>views</p>  
               </div>
               <div>
-                  <p>${tube.authors.verified?`<img class="w-5 h-5" src="image/fi_10629607.png" alt="">`:""}</p>
+                  ${tube.authors[0]?.verified ? `<img src="../image/fi_10629607.png" alt="">` : ""}
                   
               </div>
           </div>
@@ -54,7 +64,7 @@ const hendleLoadTube = async (catagoryId) =>{
           
         </div>
       </div>
-        `;
+        `; 
         cardContainer.appendChild(div);
         
 
@@ -62,11 +72,22 @@ const hendleLoadTube = async (catagoryId) =>{
 
 
 
+    }
+
+    
+
 
     // console.log(data.data)
 
 }
+const handleSortView = ()=>{
+  const viewsNumber = document.getElementById('views');
+  console.log(viewsNumber)
+}
+
+
 
 
 hendleLoadTube("1000")
 hendleCatagory();
+
