@@ -40,7 +40,7 @@ const hendleLoadTube = async (catagoryId) =>{
         div.innerHTML=`
         <div  class="card w-96 bg-base-100 shadow-xl">
         <figure><img class="w-[312px] h-[200px]" src="${tube.thumbnail}" alt="Shoes" /></figure>
-        <p>${tube.others.posted_date * 0.000278}<p>
+        
         
         <div class="card-body">
           <div class=" flex gap-4 mt-8">
