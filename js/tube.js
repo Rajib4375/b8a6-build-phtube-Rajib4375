@@ -18,6 +18,9 @@ const hendleCatagory =async () =>{
 
     console.log(data.data)
 }
+
+
+
 const hendleLoadTube = async (catagoryId) =>{
   console.log(catagoryId);
     const res = await fetch(`https://openapi.programming-hero.com/api/videos/category/${catagoryId}`);
@@ -25,7 +28,8 @@ const hendleLoadTube = async (catagoryId) =>{
 
     const cardContainer = document.getElementById('card-container');
     cardContainer.textContent ="";
-   const drawingcontainer =document.getElementById('drawing-container')
+   const drawingcontainer =document.getElementById('drawing-container');
+   drawingcontainer.textContent="";
     if(data.data.length === 0){
       drawingcontainer.innerHTML = `
       <div class="text-center">
@@ -75,16 +79,14 @@ const hendleLoadTube = async (catagoryId) =>{
     }
 
     
+    
+
+    
 
 
     // console.log(data.data)
 
 }
-const handleSortView = ()=>{
-  const viewsNumber = document.getElementById('views');
-  console.log(viewsNumber)
-}
-
 
 
 
